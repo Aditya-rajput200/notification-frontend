@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.3",
+    "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.2"
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "postcss": "^8",
