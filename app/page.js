@@ -5,12 +5,13 @@ import Searchbar from '@/component/Searchbar'
 import HomeCarousel from '@/component/HomeCarousel'
 import { getAllProducts } from '@/lib/actions'
 import { all } from 'axios'
+import ProductCard from '@/component/ProductCard'
 
  const page = async () =>{
   const  allProducts = await getAllProducts();
-   
+
   return (
-    <>
+    <> 
        
 
       <section className=" px-10 md:py-20   py-10 mx-10" >
@@ -58,16 +59,17 @@ import { all } from 'axios'
         <div  >
             <h1 className="head-text mt-4 font-bold ml-3 ">Trending </h1>
              
-               <div>
+               <div className=' md:flex gap-9 m-4 mt-4 ml-3'> 
                 {allProducts.map((product) =>{
-                  <div>
-                    {product.title}
-                  </div>
+                
+                    return  <ProductCard key={product._id}   product ={product} />
+                  
+                  
                 })}
                </div>
 
         </div>
-      </section>
+      </section> 
 
     </>
   )
