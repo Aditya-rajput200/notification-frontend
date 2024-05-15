@@ -3,8 +3,12 @@ import React from 'react'
 import Image from 'next/image'
 import Searchbar from '@/component/Searchbar'
 import HomeCarousel from '@/component/HomeCarousel'
+import { getAllProducts } from '@/lib/actions'
+import { all } from 'axios'
 
-function page() {
+ const page = async () =>{
+  const  allProducts = await getAllProducts();
+   
   return (
     <>
        
@@ -50,11 +54,18 @@ function page() {
        
       </section>
 
-      <section>
-        <div className="trendinng-section">
-          <h1>
-            Trending
-          </h1>
+      <section className="trendinng-section  px-10">
+        <div  >
+            <h1 className="head-text mt-4 font-bold ml-3 ">Trending </h1>
+             
+               <div>
+                {allProducts.map((product) =>{
+                  <div>
+                    {product.title}
+                  </div>
+                })}
+               </div>
+
         </div>
       </section>
 
