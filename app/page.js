@@ -6,6 +6,7 @@ import HomeCarousel from '@/component/HomeCarousel'
 import { getAllProducts } from '@/lib/actions'
 import { all } from 'axios'
 import ProductCard from '@/component/ProductCard'
+import GetGeo from '@/component/GetGeo'
 
  const page = async () =>{
   const  allProducts = await getAllProducts();
@@ -67,6 +68,7 @@ import ProductCard from '@/component/ProductCard'
                   
                 })}
                </div>
+               <GetGeo/>
 
         </div>
       </section> 

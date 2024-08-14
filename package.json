@@ -9,14 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "@headlessui/react": "^2.0.3",
+    "dotenv": "^16.4.5",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.3",
     "next": "^14.2.3",
     "nodemailer": "^6.9.13",
     "react": "^18",
     "react-dom": "^18",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "web-scrap": "file:"
   },
   "devDependencies": {
     "postcss": "^8",
