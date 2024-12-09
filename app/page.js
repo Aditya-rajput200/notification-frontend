@@ -3,13 +3,14 @@ import React from 'react'
 import Image from 'next/image'
 import Searchbar from '@/component/Searchbar'
 import HomeCarousel from '@/component/HomeCarousel'
-import { getAllProducts } from '@/lib/actions'
-import { all } from 'axios'
+
+
 import ProductCard from '@/component/ProductCard'
 import GetGeo from '@/component/GetGeo'
+import ProtectedRoute from '@/component/routeProtector'
 
  const page = async () =>{
-  const  allProducts = await getAllProducts();
+
 
   return (
     <> 
@@ -56,25 +57,11 @@ import GetGeo from '@/component/GetGeo'
        
       </section>
 
-      <section className="trendinng-section  px-10">
-        <div  >
-            <h1 className="head-text mt-4 font-bold ml-3 ">Trending </h1>
-             
-               <div className=' md:flex gap-9 m-4 mt-4 ml-3'> 
-                {allProducts.map((product) =>{
-                
-                    return  <ProductCard key={product._id}   product ={product} />
-                  
-                  
-                })}
-               </div>
-               <GetGeo/>
-
-        </div>
-      </section> 
+     
 
     </>
   )
 }
 
+// export default ProtectedRoute(page)
 export default page

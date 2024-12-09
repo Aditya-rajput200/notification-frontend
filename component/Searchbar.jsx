@@ -1,79 +1,86 @@
+"use client";
 
-"use client"
+import axios from "axios";
 
-import { scrapeAmazonProduct } from '@/lib/Scraped';
-import { scrapeAndStroeProduct } from '@/lib/actions';
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { Toaster, toast } from "sonner";
 
-
-const isValidAmazonProductURL = (url) =>{
+const isValidMyntraProductURL = (url) => {
   try {
     const parsedURL = new URL(url);
-    const hostname  =  parsedURL.hostname;
-    // here we  are checking the condition 
-    if(hostname.includes('amazon.com') || hostname.includes('amazon.') || hostname.includes('amazon')) {
-      return true;
-    }
+    const hostname = parsedURL.hostname;
+    // Check if the hostname includes Myntra
+    return hostname.includes("myntra");
   } catch (error) {
     return false;
   }
-  
- return false;
-}
+};
+
 function Searchbar() {
-    const [searchPromt, setSearchPromt] = useState('')
-     const [isloding, setIsloding] = useState(false)
-    
-    const  handelSubmit = async (e) => {
-       e.preventDefault();
+  const [searchPrompt, setSearchPrompt] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-       // submit hone se pehele we have to ckeck the the some cond ====
-      //  1] valid link 2]  amazon link 3] 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
 
+    // Validate URL before making the API call
+    const isValidLink = isValidMyntraProductURL(searchPrompt);
+    const token = localStorage.getItem("authToken")
+    const url = searchPrompt;
 
-      const isValidLink = isValidAmazonProductURL(searchPromt);
-      if(!isValidLink) return alert("Please Provides  the Valid Amazon link")
-
-      try {
-        setIsloding(true)  
-
-        ///   here we are scraping the data
-
-        const  product = await scrapeAndStroeProduct(searchPromt);
-      } catch (error) {
-        console.log(error)
-      }
-      finally{
-        setIsloding(false)
-      }
+    if (!isValidLink) {
+      toast.error("Please provide a valid Myntra link");
+      return;
     }
+
+    try {
+      setIsLoading(true);
+
+      // Make the POST request
+ 
+        const response = await axios.post("http://localhost:5000/api/v1/job/scrape",
+          {
+            url
+          },
+          {
+            headers: {
+              authorization: token, 
+            },
+          }
+        );
+        console.log(response.data)
+        toast.success("Data has been scraped successfully!");
+        setSearchPrompt(" ");
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while scraping data.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-<>
+    <>
+      <Toaster position="bottom-right" richColors />
+      <form className="flex flex-col gap-4 mt-12" onSubmit={handleSubmit}>
+        <input
+          value={searchPrompt}
+          onChange={(e) => setSearchPrompt(e.target.value)}
+          type="text"
+          placeholder="Enter the link here..."
+          className="searchbar-input"
+        />
 
-<form className="flex min:flex-col gap-4 mt-12"
-  onSubmit={handelSubmit}
->
-
-<input 
-
- value={searchPromt}
- onChange={(e)=>{setSearchPromt(e.target.value)}}
- type="text" 
- placeholder=" Enter the Link here..." 
- className="searchbar-input" />
-
-
-
-     <button 
-     
-      disabled ={searchPromt === ''}
-     type="submit"
-      className='searchbar-btn'
-      
-      >  {isloding ? 'Searching...' : 'Search' }</button>
-</form>
-</>
-  )
+        <button
+          disabled={searchPrompt === ""}
+          type="submit"
+          className="searchbar-btn"
+        >
+          {isLoading ? "Adding..." : "Add to Track"}
+        </button>
+      </form>
+    </>
+  );
 }
 
-export default Searchbar
+export default Searchbar;
