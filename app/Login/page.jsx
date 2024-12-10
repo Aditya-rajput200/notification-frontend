@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/user/login", {
+      const response = await axios.post("https://notification-backend-eight.vercel.app/api/v1/user/login", {
         email, 
         password,
       });

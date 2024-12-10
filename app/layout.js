@@ -1,7 +1,7 @@
 import { Inter,Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/Navbar";
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 
 const inter = Inter({ subsets: ["latin"] });
 const spaceGrotesk = Space_Grotesk({
@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
- <UserProvider>
+
       <Navbar/>
         {children}
         
-        </UserProvider>      
+             
         </body>
 
     </html>
