@@ -2,13 +2,10 @@
 const nextConfig = {
   experimental: {
     serverActions: true,
-    serverComponentsExternalPackages: ['mongoose']
   },
   images: {
-    domains: ['m.media-amazon.com']
-  }
-
-  
-}
+    domains: [], // Remove "m.media-amazon.com" or add relevant domains if needed
+  },
+};
 
 export default nextConfig;

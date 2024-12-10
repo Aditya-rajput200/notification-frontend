@@ -1,13 +1,7 @@
-import Navbar from '@/component/Navbar'
 import React from 'react'
 import Image from 'next/image'
 import Searchbar from '@/component/Searchbar'
 import HomeCarousel from '@/component/HomeCarousel'
-
-
-import ProductCard from '@/component/ProductCard'
-import GetGeo from '@/component/GetGeo'
-import ProtectedRoute from '@/component/routeProtector'
 
  const page = async () =>{
 
