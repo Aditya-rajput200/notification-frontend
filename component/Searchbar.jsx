@@ -38,7 +38,7 @@ function Searchbar() {
 
       // Make the POST request
  
-        const response = await axios.post("http://localhost:5000/api/v1/job/scrape",
+        const response = await axios.post("https://notification-backend-eight.vercel.app/api/v1/job/scrape",
           {
             url
           },
