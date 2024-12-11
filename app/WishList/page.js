@@ -25,7 +25,7 @@ function ProductTable() {
     }
 
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/job/delete/getProduts", {
+      const response = await axios.get("http://localhost:5000/api/v1/job/getProduts", {
         headers: {
           authorization: token,
         },
