@@ -25,7 +25,7 @@ function ProductTable() {
     }
 
     try {
-      const response = await axios.get("https://notification-backend-eight.vercel.app/api/v1/job/getProduts", {
+      const response = await axios.get("http://localhost:5000/api/v1/job/delete/getProduts", {
         headers: {
           authorization: token,
         },
@@ -40,7 +40,7 @@ function ProductTable() {
   const handleDelete = async (productId) => {
     try {
      
-      const response = await axios.delete("https://notification-backend-eight.vercel.app/api/v1/job/delete", {
+      const response = await axios.delete("http://localhost:5000/api/v1/job/delete", {
         headers: {
           authorization: token,
         },
