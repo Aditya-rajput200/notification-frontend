@@ -70,7 +70,7 @@ function Navbar() {
                  
              
              
-             {isLogin? <button className=' bg-red-100 text-red-600 flex justify-evenly h-10 w-28 pl-3 font-bold pt-2 rounded-md hover:bg-red-500 hover:text-red-200' onClick={()=>LogOut()} >Log Out < FiLogOut className='mt-1 '/>
+             {isLogin? <button className=' bg-red-100 text-red-600 flex justify-evenly h-10 w-28 pl-3 font-bold pt-2 rounded-md hover:bg-red-500 hover:text-white' onClick={()=>LogOut()} >Log Out < FiLogOut className='mt-1 '/>
              </button>  : <Link href="/Login" ><button> <Image width={28} height={28} src = '/assets/icons/user.svg' alt ='user'  className="object-contain" /></button></Link>}
             
 
