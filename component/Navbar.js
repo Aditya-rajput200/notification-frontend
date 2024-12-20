@@ -1,9 +1,35 @@
-import React from 'react'
+ "use client"
+
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FiLogOut } from "react-icons/fi";
 
 
 function Navbar() {
+  const[isLogin, setIsLogin] = useState(false)
+
+  const checkToken = ()=>{
+    const token = localStorage.getItem("authToken")
+    if (token) {
+      setIsLogin(true)
+      
+    }
+}
+ 
+
+ const LogOut = () =>{
+
+  const remtoken  = localStorage.removeItem("authToken")
+  setIsLogin(false)
+
+ }
+
+  useEffect(()=>{
+    checkToken()
+    
+  },[]) 
+
   const navIcons = [
     { src: '/assets/icons/search.svg', alt: 'search' },
     { src: '/assets/icons/black-heart.svg', alt: 'heart' },
@@ -40,8 +66,12 @@ function Navbar() {
 
              <button> <Image width={28} height={28} src = '/assets/icons/search.svg' alt ='search'  className="object-contain" /></button>
             <Link href="/WishList"><button> <Image width={28} height={28} src = '/assets/icons/black-heart.svg' className="object-contain" alt ='hert'  /></button></Link>
-            <Link href="/Login" ><button> <Image width={28} height={28} src = '/assets/icons/user.svg' alt ='user'  className="object-contain" /></button></Link>
-          
+             
+                 
+             
+             
+             {isLogin? <button className=' bg-red-100 text-red-600 flex justify-evenly h-10 w-28 pl-3 font-bold pt-2 rounded-md hover:bg-red-500 hover:text-red-200' onClick={()=>LogOut()} >Log Out < FiLogOut className='mt-1 '/>
+             </button>  : <Link href="/Login" ><button> <Image width={28} height={28} src = '/assets/icons/user.svg' alt ='user'  className="object-contain" /></button></Link>}
             
 
           </div>
