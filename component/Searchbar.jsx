@@ -1,7 +1,5 @@
 "use client";
-
 import axios from "axios";
-
 import React, { useState } from "react";
 import { Toaster, toast } from "sonner";
 
@@ -16,7 +14,7 @@ const isValidMyntraProductURL = (url) => {
   }
 };
 
-function Searchbar() {
+  function Searchbar() {
   const [searchPrompt, setSearchPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

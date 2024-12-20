@@ -37,7 +37,7 @@ import HomeCarousel from '@/component/HomeCarousel'
 
               <Searchbar />
           </div>
-
+              
           <div>
           <HomeCarousel />
 
