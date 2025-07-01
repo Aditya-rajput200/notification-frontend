@@ -4,7 +4,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
 import ProtectedRoute from "@/component/routeProtector";
+import Switch from '@mui/material/Switch';
 
+const label = { inputProps: { 'aria-label': 'Size switch demo' } };
 
 function ProductTable() {
   const [products, setProducts] = useState([]);
@@ -77,6 +79,7 @@ function ProductTable() {
               <th className="py-3 px-4 text-center">Is Coupon</th>
               <th className="py-3 px-4 text-center">Discounted Price</th>
               <th className="py-3 px-4 text-center">Actions</th>
+              <th className="py-3 px-4 text-center">Tracking Status</th>
             </tr>
           </thead>
           <tbody>
@@ -132,6 +135,13 @@ function ProductTable() {
             
               </div> ) }
             
+                </td>
+
+                <td className="py-3 px-4 text-center">
+                <div>
+     
+      <Switch {...label} defaultChecked  color="warning" />
+    </div>
                 </td>
               </tr>
             ))}
